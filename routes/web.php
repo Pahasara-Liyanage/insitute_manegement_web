@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\SubjectController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -14,6 +14,11 @@ Route::post('login_post',[AuthController::class,'login_post']);
 Route::group(['middleware' => 'admin'], function() {
 
     Route::get('admin/dashboard',[DashboardController::class,'dashboard']);
+
+
+    Route::get('admin/Subject', [SubjectController::class,'index']);
+    Route::post('/admin/subject/store',[SubjectController::class,'store']);
+
 
 });
 

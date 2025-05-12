@@ -112,7 +112,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./widgets/cards.html" class="nav-link">
+                    <a href="{{ url('admin/Subject') }}" class="nav-link">
                         <i class="nav-icon bi bi-book-fill"></i>
                       <p>Add Subject</p>
                     </a>
