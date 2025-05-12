@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -19,6 +20,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('admin/Subject', [SubjectController::class,'index']);
     Route::post('/admin/subject/store',[SubjectController::class,'store']);
 
+    Route::get('admin/teacher', [TeacherController::class,'index']);
 
 });
 

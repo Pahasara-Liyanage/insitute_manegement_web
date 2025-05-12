@@ -80,7 +80,7 @@
 
             </li>
             <li class="nav-item">
-              <a href="./generate/theme.html" class="nav-link">
+              <a href="{{ url('admin/teacher') }}" class="nav-link">
                 <i class="nav-icon bi bi-person-plus"></i>
 
                 <p> Teacher Registration </p>
