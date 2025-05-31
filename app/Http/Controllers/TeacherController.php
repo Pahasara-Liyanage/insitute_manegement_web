@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SubjectModel;
+use App\Models\TeacherModel;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -11,7 +13,8 @@ class TeacherController extends Controller
      */
     public function index(Request $request)
     {
-        return view('teacher.list');
+        $sub = SubjectModel::all();
+        return view('teacher.list')->with('sub', $sub);
 
     }
 

@@ -5,11 +5,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-Route::get('/', [AuthController::class,'login']);
+Route::get('/', function () {
+    return view('homepage/home');
+})->name('home');
+
+Route::get('/login', [AuthController::class,'login'])->name('login');
 Route::post('login_post',[AuthController::class,'login_post']);
 
 Route::group(['middleware' => 'admin'], function() {
@@ -30,4 +31,4 @@ Route::group(['middleware' => 'user'], function() {
 
 });
 
-Route::get('logout',[AuthController::class,'login']);
+Route::get('logout', [AuthController::class, 'logout']); //tftu

@@ -6,7 +6,7 @@
 }
 
 body {
-	background: #f6f5f7;
+	background: #f4e1e1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -45,9 +45,9 @@ a {
 }
 
 button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border-radius: 30px;
+	border: 1px solid  #35b0f1;
+	background-color:  #05a1f5;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -92,7 +92,7 @@ input {
 .container {
 	background-color: #fff;
 	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
 			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
@@ -137,7 +137,7 @@ input {
 		opacity: 0;
 		z-index: 1;
 	}
-	
+
 	50%, 100% {
 		opacity: 1;
 		z-index: 5;
@@ -160,9 +160,9 @@ input {
 }
 
 .overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background:  #06BBCC;
+	background: -webkit-linear-gradient(to right,  #06BBCC,  #0cc8d9);
+	background: linear-gradient(to right,  #18ebfe, #30adde);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

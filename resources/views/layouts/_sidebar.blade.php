@@ -34,11 +34,10 @@
               @if(Auth::user()->is_role == 1)
 
               <li class="nav-item ">
-                <a href="{{ url('admin/dashboard') }}" class="nav-link active">
-                   <i class="nav-icon fa fa-dashboard"></i>
+                <a href="{{ url('admin/dashboard') }}" class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
+                  <i class="nav-icon bi bi-speedometer"></i>
                   <p> Dashboard</p>
                 </a>
-
               </li>
 
               <li class="nav-item">
@@ -80,7 +79,7 @@
 
             </li>
             <li class="nav-item">
-              <a href="{{ url('admin/teacher') }}" class="nav-link">
+              <a href="{{ url('admin/teacher') }}" class="nav-link @if (Request::segment(2) == 'teacher') active @endif">
                 <i class="nav-icon bi bi-person-plus"></i>
 
                 <p> Teacher Registration </p>
@@ -112,7 +111,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ url('admin/Subject') }}" class="nav-link">
+                    <a href="{{ url('admin/Subject') }}" class="nav-link @if (Request::segment(2) == 'Subject') active @endif">
                         <i class="nav-icon bi bi-book-fill"></i>
                       <p>Add Subject</p>
                     </a>
