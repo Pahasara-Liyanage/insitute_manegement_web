@@ -6,8 +6,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INSITUTE LOGIN </title>
   <link rel="stylesheet" href="{{ asset('dist/style.css') }}">
+<style>
+  @media (max-width: 768px) {
+  body {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .form-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .overlay-container {
+    display: none; /* Optional: hide overlay on small screens */
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+}
+
+</style>
+
+
 </head>
 <body>
+
    <h1> INSITUTE MANEGEMENT SYSTEM  </h1>
    <BR>
    <BR>
@@ -37,6 +77,7 @@
       </form>
     </div>
     <div class="form-container sign-in-container">
+
 
       <form action=" {{ url('login_post') }}" method="post">
         <h1>Sign in</h1>
@@ -75,10 +116,14 @@
           <h1> WELCOME INSITUTE MANEGEMENT SYSTEM </h1>
           <p>Enter your personal details and start journey with us</p>
           <button class="ghost" id="signUp">Sign Up</button>
+
+
         </div>
+
       </div>
     </div>
   </div>
+
 
   <!-- <footer>
     <p>
