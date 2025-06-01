@@ -122,8 +122,8 @@
                          </div>
 
                           <div class="mb-3">
-                             <label for="subject_name" class="form-label">NIC </label>
-                             <input type="text" class="form-control" id="subject_name" name="subject_name" required>
+                             <label for="nic" class="form-label">NIC </label>
+                             <input type="text" class="form-control" id="nic" name="nic" required>
                          </div>
 
 

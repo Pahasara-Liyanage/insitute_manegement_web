@@ -55,12 +55,24 @@
                                      </thead>
                                      <tbody>
                                          @foreach ($subject as $s)
-                                             <tr>
-                                                 <td>{{ $s->id }}</td>
-                                                 <td>{{ $s->subject_name }}</td>
-                                                 <td>{{ $s->created_at }}</td>
-                                                 <td>{{ $s->updated_at }}</td>
-                                             </tr>
+                                            <tr>
+                                                <td>{{ $s->id }}</td>
+                                                <td>{{ $s->subject_name }}</td>
+                                                <td>{{ $s->created_at }}</td>
+                                                <td>{{ $s->updated_at }}</td>
+                                                <td>
+                                                    <div class="d-flex gap-3">
+                                                        <a href="" class="btn btn-warning">Edit</a>
+
+
+                                                        <form action="/admin/subject/delete/{{ $s->id }}" method="POST">
+                                                        @csrf
+                                                            @method('DELETE')
+                                                            <input type="submit" class='btn btn-danger' value="Delete">
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                          @endforeach
                                      </tbody>
                                  </table>

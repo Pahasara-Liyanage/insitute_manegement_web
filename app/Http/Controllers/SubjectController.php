@@ -64,6 +64,8 @@ class SubjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $subjectToDelete = SubjectModel::find($id);
+         $subjectToDelete->delete();
+         return redirect('/admin/Subject');
     }
 }

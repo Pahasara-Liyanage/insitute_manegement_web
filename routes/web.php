@@ -20,6 +20,9 @@ Route::group(['middleware' => 'admin'], function() {
 
     Route::get('admin/Subject', [SubjectController::class,'index']);
     Route::post('/admin/subject/store',[SubjectController::class,'store']);
+    Route::delete('/admin/subject/delete/{id}',[SubjectController::class,'destroy']);
+
+
 
     Route::get('admin/teacher', [TeacherController::class,'index']);
 
