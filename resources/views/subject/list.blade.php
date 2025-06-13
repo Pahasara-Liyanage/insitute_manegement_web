@@ -62,7 +62,8 @@
                                                 <td>{{ $s->updated_at }}</td>
                                                 <td>
                                                     <div class="d-flex gap-3">
-                                                        <a href="" class="btn btn-warning">Edit</a>
+                                                        <a href="" class="btn btn-warning" data-bs-toggle="modal"
+                                             data-bs-target="#addCategoryModal" >Edit</a>
 
 
                                                         <form action="/admin/subject/delete/{{ $s->id }}" method="POST">
