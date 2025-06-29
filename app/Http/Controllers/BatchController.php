@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubjectModel;
+use Illuminate\Bus\Batch;
 use Illuminate\Http\Request;
+use App\Models\BatchModel;
 
-class SubjectController extends Controller
+class BatchController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $subject = SubjectModel::all();
-        return view('subject.list')->with('subject', $subject);
+        $bat = BatchModel::all();
+        return view('batch.list')->with('bat', $bat);
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    
     public function create()
     {
         //
@@ -30,10 +31,7 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        $subject = new SubjectModel();
-        $subject->subject_name = $request->subject_name;
-        $subject->save();
-        return redirect('/admin/Subject');
+        //
     }
 
     /**
@@ -61,12 +59,10 @@ class SubjectController extends Controller
     }
 
     /**
-     *  Remove the specified resource from storage.
+     * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $subjectToDelete = SubjectModel::find($id);
-        $subjectToDelete->delete();
-        return redirect('/admin/Subject');
+        //
     }
 }

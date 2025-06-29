@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\BatchController;
+use Illuminate\Bus\Batch;
 
 Route::get('/', function () {
     return view('homepage/home');
@@ -25,6 +27,8 @@ Route::group(['middleware' => 'admin'], function() {
 
 
     Route::get('admin/teacher', [TeacherController::class,'index']);
+
+    Route::get('admin/batch', [BatchController::class,'index']);
 
 });
 
