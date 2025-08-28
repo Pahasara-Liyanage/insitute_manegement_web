@@ -4,7 +4,7 @@
         <!--end::To the end-->
         <!--begin::Copyright-->
         <strong>
-          Copyright &copy; 2014-2024&nbsp;
+          Copyright &copy; 2025&nbsp;
           <a href="" class="text-decoration-none">PAHASARA LIYANAGE</a>.
         </strong>
         All rights reserved.

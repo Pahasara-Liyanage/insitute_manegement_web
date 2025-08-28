@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Bus\Batch;
 use Illuminate\Http\Request;
-use App\Models\BatchModel;
+use App\Models\SubjectModel;
 
 class BatchController extends Controller
 {
@@ -13,8 +13,8 @@ class BatchController extends Controller
      */
     public function index()
     {
-        $bat = BatchModel::all();
-        return view('batch.list')->with('bat', $bat);
+        $sub = SubjectModel::all();
+        return view('batch.list')->with('sub', $sub);
 
     }
 

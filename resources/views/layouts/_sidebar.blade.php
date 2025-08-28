@@ -107,7 +107,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./widgets/info-box.html" class="nav-link">
+                    <a href="{{ url('admin/batch') }}" class="nav-link">
                         <i class="nav-icon bi bi-people-fill"></i>
                       <p>Add Batch </p>
                     </a>
