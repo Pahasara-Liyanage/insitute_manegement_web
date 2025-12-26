@@ -62,12 +62,11 @@
                                                 <td>{{ $s->updated_at }}</td>
                                                 <td>
                                                     <div class="d-flex gap-3">
-                                                        <a href="" class="btn btn-warning" data-bs-toggle="modal"
-                                             data-bs-target="#addCategoryModal" >Edit</a>
-
+                                                        <a href="#" class="btn btn-warning edit-subject-btn" data-bs-toggle="modal"
+                                                            data-bs-target="#editCategoryModal" data-id="{{ $s->id }}" data-name="{{ $s->subject_name }}">Edit</a>
 
                                                         <form action="/admin/subject/delete/{{ $s->id }}" method="POST">
-                                                        @csrf
+                                                            @csrf
                                                             @method('DELETE')
                                                             <input type="submit" class='btn btn-danger' value="Delete">
                                                         </form>
@@ -109,7 +108,44 @@
                      </form>
                  </div>
              </div>
-
+             </div>
          </div>
-     </div>
+
+    <div class="modal fade" id="editCategoryModal" tabindex="-1" aria-labelledby="editCategoryModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editCategoryModalLabel">Edit Subject</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editSubjectForm" action="" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label for="edit_subject_name" class="form-label">Subject Name</label>
+                            <input type="text" class="form-control" id="edit_subject_name" name="subject_name" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const editButtons = document.querySelectorAll('.edit-subject-btn');
+            editButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const form = document.getElementById('editSubjectForm');
+                    form.action = '/admin/subject/update/' + id;
+                    document.getElementById('edit_subject_name').value = name;
+                });
+            });
+        });
+    </script>
  @endsection

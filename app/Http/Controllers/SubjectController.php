@@ -19,7 +19,7 @@ class SubjectController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    
+
     public function create()
     {
         //
@@ -57,7 +57,19 @@ class SubjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'subject_name' => 'required|string|max:255',
+        ]);
+
+        $subject = SubjectModel::find($id);
+        if (! $subject) {
+            return redirect('/admin/Subject')->with('error', 'Subject not found.');
+        }
+
+        $subject->subject_name = $validated['subject_name'];
+        $subject->save();
+
+        return redirect('/admin/Subject')->with('success', 'Subject updated successfully.');
     }
 
     /**

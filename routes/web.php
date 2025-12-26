@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Bus\Batch;
 
 Route::get('/', function () {
@@ -24,11 +25,22 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('/admin/subject/store',[SubjectController::class,'store']);
     Route::delete('/admin/subject/delete/{id}',[SubjectController::class,'destroy']);
 
+    // Update a subject
+    Route::put('/admin/subject/update/{id}', [SubjectController::class, 'update']);
+
 
 
     Route::get('admin/teacher', [TeacherController::class,'index']);
+    Route::get('admin/teacher/create', [TeacherController::class, 'create']);
+    Route::post('admin/teacher/store', [TeacherController::class, 'store']);
+    Route::get('admin/teacher/edit/{id}', [TeacherController::class, 'edit']);
+    Route::put('admin/teacher/update/{id}', [TeacherController::class, 'update']);
+    Route::delete('admin/teacher/delete/{id}', [TeacherController::class, 'destroy']);
+    Route::get('admin/teacher/show/{id}', [TeacherController::class, 'show']);
 
     Route::get('admin/batch', [BatchController::class,'index']);
+
+    Route::get('admin/student', [StudentController::class,'index']);
 
 });
 

@@ -14,7 +14,8 @@ class TeacherController extends Controller
     public function index(Request $request)
     {
         $sub = SubjectModel::all();
-        return view('teacher.list')->with('sub', $sub);
+        $teachers = TeacherModel::with('subject')->get();
+        return view('teacher.list')->with(['sub' => $sub, 'teachers' => $teachers]);
 
     }
 
@@ -23,7 +24,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        $sub = SubjectModel::all();
+        return view('teacher.create')->with('sub', $sub);
     }
 
     /**
@@ -31,7 +33,26 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // If there are no subjects, provide a clear error rather than a validation failure
+        if (SubjectModel::count() === 0) {
+            return redirect()->back()->withInput()->with('error', 'Please create at least one subject before adding a teacher.');
+        }
+
+        $data = $request->validate([
+            'teacher_fname' => 'required|string|max:255',
+            'teacher_lname' => 'required|string|max:255',
+            'teacher_email' => 'required|email|max:255',
+            'teacher_phone' => 'nullable|string|max:50',
+            'teacher_nic' => 'nullable|string|max:50',
+            'subject_model_id' => 'required|exists:subject_models,id',
+        ]);
+
+        try {
+            TeacherModel::create($data);
+            return redirect('/admin/teacher')->with('success', 'Teacher created successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->with('error', 'Failed to create teacher: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -39,7 +60,8 @@ class TeacherController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $teacher = TeacherModel::with('subject')->findOrFail($id);
+        return view('teacher.show')->with('teacher', $teacher);
     }
 
     /**
@@ -47,7 +69,9 @@ class TeacherController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $teacher = TeacherModel::findOrFail($id);
+        $sub = SubjectModel::all();
+        return view('teacher.edit')->with(['teacher' => $teacher, 'sub' => $sub]);
     }
 
     /**
@@ -55,7 +79,19 @@ class TeacherController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'teacher_fname' => 'required|string|max:255',
+            'teacher_lname' => 'required|string|max:255',
+            'teacher_email' => 'required|email|max:255',
+            'teacher_phone' => 'nullable|string|max:50',
+            'teacher_nic' => 'nullable|string|max:50',
+            'subject_model_id' => 'required|exists:subject_models,id',
+        ]);
+
+        $teacher = TeacherModel::findOrFail($id);
+        $teacher->update($data);
+
+        return redirect('/admin/teacher')->with('success', 'Teacher updated successfully');
     }
 
     /**
@@ -63,6 +99,8 @@ class TeacherController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $teacher = TeacherModel::findOrFail($id);
+        $teacher->delete();
+        return redirect('/admin/teacher')->with('success', 'Teacher deleted');
     }
 }
